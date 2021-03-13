@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option go_package = "kotlang.com/omnishell/environment";
+option java_multiple_files = true;
+option java_package = "com.kotlang.environment";
+option java_outer_classname = "HistoryManagerProto";
+
+package environment;
+
+service HistoryManager {
+    rpc AddToHistory(HistoryEntry) returns (HistoryEntry) {}
+    rpc SearchHistory(HistoryQuery) returns (HistorySearchResult) {}
+}
+
+message HistoryEntry {
+    string command = 1;
+}
+
+message HistoryQuery {
+    string prefix = 1;
+    int32 limit = 2;
+}
+
+message HistorySearchResult {
+    repeated string searchResult = 1;
+}

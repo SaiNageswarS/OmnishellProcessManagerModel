@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option go_package = "kotlang.com/omnishell/command";
+option java_multiple_files = true;
+option java_package = "com.kotlang.plugins.command";
+option java_outer_classname = "CommandPluginProto";
+
+package command;
+
+service CommandPlugin { 
+    rpc RunCommand(stream CommandInput) returns (stream CommandOutput) {}
+}
+
+message CommandInput {
+    string workingDir = 1;
+    string commandAndArguments = 2;
+    string input = 3;
+}
+
+message CommandOutput {
+    string output = 1;
+    string error = 2;
+    string path = 3;
+    string status = 4;
+}
