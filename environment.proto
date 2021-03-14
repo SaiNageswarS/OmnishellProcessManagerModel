@@ -2,10 +2,10 @@ syntax = "proto3";
 
 option go_package = "github.com/SaiNageswarS/OmnishellProcessManager/generated";
 option java_multiple_files = true;
-option java_package = "com.kotlang.environment";
+option java_package = "com.kotlang.omnishell";
 option java_outer_classname = "HistoryManagerProto";
 
-package environment;
+package omnishell;
 
 service HistoryManager {
     rpc AddToHistory(HistoryEntry) returns (HistoryEntry) {}

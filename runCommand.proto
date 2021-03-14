@@ -2,12 +2,12 @@ syntax = "proto3";
 
 option go_package = "github.com/SaiNageswarS/OmnishellProcessManager/generated";
 option java_multiple_files = true;
-option java_package = "com.kotlang.plugins.command";
-option java_outer_classname = "CommandPluginProto";
+option java_package = "com.kotlang.omnishell";
+option java_outer_classname = "CommandExecutionProto";
 
-package command;
+package omnishell;
 
-service CommandPlugin { 
+service CommandExecutionService { 
     rpc RunCommand(stream CommandInput) returns (stream CommandOutput) {}
 }
 

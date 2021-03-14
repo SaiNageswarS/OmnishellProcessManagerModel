@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option go_package = "github.com/SaiNageswarS/OmnishellProcessManager/generated";
+option java_multiple_files = true;
+option java_package = "com.kotlang.omnishell";
+option java_outer_classname = "AutoCompleteProto";
+
+package omnishell;
+
+service AutoCompleteService {
+    rpc autoComplete(CommandContext) returns (AutoCompleteResult) {}
+}
+
+message CommandContext {
+    string workingDir = 1;
+    string command = 2;
+    int32 maxSuggestions = 3;
+}
+
+message AutoCompleteResult {
+    repeated string suggestions = 1;
+}
