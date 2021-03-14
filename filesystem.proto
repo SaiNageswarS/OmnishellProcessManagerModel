@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+import "autoComplete.proto";
+
+option go_package = "github.com/SaiNageswarS/OmnishellProcessManager/generated";
+option java_multiple_files = true;
+option java_package = "com.kotlang.omnishell";
+option java_outer_classname = "FileSystemProto";
+
+package omnishell;
+
+service FileSystemManager {
+    rpc ChangeDirectory(CommandContext) returns (ChangeDirectoryOutput) {}
+}
+
+message ChangeDirectoryOutput {
+    string outputPath = 1;
+    string error = 2;
+}
