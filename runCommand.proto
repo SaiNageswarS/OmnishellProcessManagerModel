@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "autoComplete.proto";
+
 option go_package = "github.com/SaiNageswarS/OmnishellProcessManager/generated";
 option java_multiple_files = true;
 option java_package = "com.kotlang.omnishell";
@@ -7,14 +9,15 @@ option java_outer_classname = "CommandExecutionProto";
 
 package omnishell;
 
-service CommandExecutionService { 
-    rpc RunCommand(stream CommandInput) returns (stream CommandOutput) {}
+service CommandExecutionService {
+    rpc InitiateCommand(CommandContext) returns (CommandId) {}
+    rpc RunCommand(CommandId) returns (stream CommandOutput) {}
+    rpc GiveInput(CommandInputById) returns (CommandId) {}
 }
 
-message CommandInput {
-    string workingDir = 1;
-    string commandAndArguments = 2;
-    string input = 3;
+message CommandInputById {
+    string cmdId = 1;
+    string input = 2;
 }
 
 message CommandOutput {
@@ -33,4 +36,8 @@ message CommandOutput {
         FAILED = 3;
     }
     Status status = 3;
+}
+
+message CommandId {
+    string id = 1;
 }
