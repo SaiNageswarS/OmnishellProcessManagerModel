@@ -12,6 +12,10 @@ service HistoryManager {
     rpc SearchHistory(HistoryQuery) returns (HistorySearchResult) {}
 }
 
+service EnvironmentManager {
+    rpc GetEnvironment(EnvironmentRequest) returns (Environment) {}
+}
+
 message HistoryEntry {
     string command = 1;
 }
@@ -23,4 +27,9 @@ message HistoryQuery {
 
 message HistorySearchResult {
     repeated string searchResult = 1;
+}
+
+message EnvironmentRequest {}
+message Environment {
+    repeated string env = 1;
 }
