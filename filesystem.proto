@@ -11,9 +11,22 @@ package omnishell;
 
 service FileSystemManager {
     rpc ChangeDirectory(CommandContext) returns (ChangeDirectoryOutput) {}
+    rpc GetFileList(CommandContext) returns (FileList) {}
 }
 
 message ChangeDirectoryOutput {
     string outputPath = 1;
     string error = 2;
+}
+
+message FileDetail {
+    string fileName = 1;
+    string extension = 2;
+    bool isDirectory = 3;
+    bool isExecutable = 4;
+    string path = 5;
+}
+
+message FileList {
+    repeated FileDetail files = 1;
 }

@@ -14,7 +14,6 @@ service AutoCompleteService {
 message CommandContext {
     string workingDir = 1;
     string command = 2;
-    int32 maxSuggestions = 3;
 }
 
 message AutoCompleteResult {
