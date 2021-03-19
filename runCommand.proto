@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "autoComplete.proto";
+import "google/protobuf/wrappers.proto";
 
 option go_package = "github.com/SaiNageswarS/OmnishellProcessManager/generated";
 option java_multiple_files = true;
@@ -13,6 +14,7 @@ service CommandExecutionService {
     rpc InitiateCommand(CommandContext) returns (CommandId) {}
     rpc RunCommand(CommandId) returns (stream CommandOutput) {}
     rpc GiveInput(CommandInputById) returns (CommandId) {}
+    rpc KillProcess(CommandId) returns (google.protobuf.BoolValue) {}
 }
 
 message CommandInputById {
