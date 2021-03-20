@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "autoComplete.proto";
+import "google/protobuf/wrappers.proto";
 
 option go_package = "github.com/SaiNageswarS/OmnishellProcessManager/generated";
 option java_multiple_files = true;
@@ -12,6 +13,7 @@ package omnishell;
 service FileSystemManager {
     rpc ChangeDirectory(CommandContext) returns (ChangeDirectoryOutput) {}
     rpc GetFileList(CommandContext) returns (FileList) {}
+    rpc GetHome(google.protobuf.StringValue) returns (google.protobuf.StringValue) {}
 }
 
 message ChangeDirectoryOutput {
