@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "google/protobuf/wrappers.proto";
+
 option go_package = "github.com/SaiNageswarS/OmnishellProcessManager/generated";
 option java_multiple_files = true;
 option java_package = "com.kotlang.omnishell";
@@ -14,6 +16,8 @@ service HistoryManager {
 
 service EnvironmentManager {
     rpc GetEnvironment(EnvironmentRequest) returns (Environment) {}
+    rpc ExportEnvironmentVariable(EnvVariableRequest) returns (google.protobuf.StringValue) {}
+    rpc SaveEnvironmentVariable(EnvVariableRequest) returns (google.protobuf.StringValue) {}
 }
 
 message HistoryEntry {
@@ -32,4 +36,9 @@ message HistorySearchResult {
 message EnvironmentRequest {}
 message Environment {
     repeated string env = 1;
+}
+
+message EnvVariableRequest {
+    string variable = 1;
+    string valueExpression = 2;
 }
