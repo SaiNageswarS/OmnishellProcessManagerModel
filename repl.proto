@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option go_package = "github.com/SaiNageswarS/OmnishellProcessManager/generated";
+option java_multiple_files = true;
+option java_package = "com.kotlang.omnishell";
+option java_outer_classname = "ReplProto";
+
+package omnishell;
+
+service ReplManager {
+  rpc StartRepl(ReplRequest) returns (ReplResponse) {}
+}
+
+message ReplRequest {
+  string language = 1;
+  string port = 2;
+}
+
+message ReplResponse {
+  string port = 1;
+  string error = 2;
+}

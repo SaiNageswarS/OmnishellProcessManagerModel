@@ -20,6 +20,7 @@ service CommandExecutionService {
 message CommandInputById {
     string cmdId = 1;
     string input = 2;
+    string shell = 3;
 }
 
 message CommandOutput {
@@ -42,4 +43,5 @@ message CommandOutput {
 
 message CommandId {
     string id = 1;
+    string shell = 2;
 }

@@ -14,6 +14,8 @@ service AutoCompleteService {
 message CommandContext {
     string workingDir = 1;
     string command = 2;
+    // can be /bin/bash or /bin/zsh or powershell or node (repl) or python (repl)
+    string shell = 3;
 }
 
 message AutoCompleteResult {
