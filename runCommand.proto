@@ -15,6 +15,7 @@ service CommandExecutionService {
     rpc RunCommand(CommandId) returns (stream CommandOutput) {}
     rpc GiveInput(CommandInputById) returns (CommandId) {}
     rpc KillProcess(CommandId) returns (google.protobuf.BoolValue) {}
+    rpc AddRepl(ReplRequest) returns (ReplResponse) {}
 }
 
 message CommandInputById {
@@ -45,3 +46,14 @@ message CommandId {
     string id = 1;
     string shell = 2;
 }
+
+message ReplRequest {
+    string language = 1;
+    string port = 2;
+  }
+  
+  message ReplResponse {
+    string port = 1;
+    string error = 2;
+  }
+  
